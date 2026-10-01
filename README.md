@@ -63,14 +63,45 @@ third part syntax
  1537568208582606948
 How to deploy 
 
-for local hosting:
+## A:) for local hosting:
 
 1: clone the repo:
 ``` bash
 git clone https://github.com/abnjo/dsc-cam-ss-requirement-bot.git
 ```
+2:install dependencies
 
 install node for your operating system 
 
 [![Node.js Installation](https://img.shields.io/badge/Node.js-Install_via_Package_Manager-339933?logo=nodedotjs)](https://nodejs.org/en/download/package-manager)
 
+after the installation is done
+
+``` bash
+cd dsc-cam-ss-requirement-bot
+npm install
+```
+optional but recommended to install use pm2 or equivalent to keep the bot running in the background
+
+``` bash
+npm install -g pm2
+pm2 start index.js --name "GuardBot"
+pm2 save
+```
+
+if you want to skip this step just run 
+```bash
+npm start
+```
+
+## B:) for cloud hosting (recommended:-> pella)
+1. upload the project files (package.json, index.js) to your cloud environment.
+2. navigate to your provider's environment variables or config vars dashboard.
+3. inject the variables directly (do not use quotes):
+    DISCORD_TOKEN $\rightarrow$ YourTokenHere
+    TARGET_RULES $\rightarrow$ TARGET_RULES_HERE    
+    GRACE_PERIOD_SECONDS $\rightarrow$ ACTIVITY_TIMEOUT_HERE
+4. Set the Start/Run command to:
+``` bash
+npm start
+```
